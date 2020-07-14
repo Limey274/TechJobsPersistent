@@ -14,13 +14,15 @@ namespace TechJobsPersistent.Controllers
 {
     public class EmployerController : Controller
     {
-        // GET: /<controller>/
+        
 
         private JobDbContext context;
             public EmployerController(JobDbContext dbContext)
         {
             context = dbContext;
         }
+
+        // GET: /Employer/
         public IActionResult Index()
         {
 
@@ -30,6 +32,7 @@ namespace TechJobsPersistent.Controllers
             return View(employer);
         }     
 
+        // Get: /employer/add
         public IActionResult Add()
         {            
             AddEmployerViewModel viewModel = new AddEmployerViewModel();
@@ -37,6 +40,7 @@ namespace TechJobsPersistent.Controllers
         }
 
 
+        //Post: /employer/ProcessAddEmployerForm
         [HttpPost]
         public IActionResult ProcessAddEmployerForm(AddEmployerViewModel viewModel)
         {

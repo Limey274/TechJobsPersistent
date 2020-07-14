@@ -49,17 +49,18 @@ namespace TechJobsPersistent.Controllers
                     Employer = context.Employers.Find(addJobViewModel.EmployerId)
                 };
 
-                foreach (string skill in selectedSkills)
-                {
-                    JobSkill jobSkill = new JobSkill
-                    {
-                        JobId = newJob.Id,
-                        SkillId = Int32.Parse(skill),
-                        Job = newJob
+                        foreach (string skill in selectedSkills)
+                        {
+                            JobSkill jobSkill = new JobSkill
+                            {
+                                JobId = newJob.Id,
+                                Skill = context.Skills.Find(int.Parse(skill)),
+                                SkillId = Int32.Parse(skill),
+                                Job = newJob
 
-                    };
-                    context.JobSkills.Add(jobSkill);
-                }
+                            };
+                            context.JobSkills.Add(jobSkill);
+                          }
                 context.Jobs.Add(newJob);
                 context.SaveChanges();
 
