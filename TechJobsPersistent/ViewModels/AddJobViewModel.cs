@@ -18,9 +18,13 @@ namespace TechJobsPersistent.ViewModels
         [Required(ErrorMessage = "Please enter a Location")]
         public int EmployerId { get; set; }
 
+        public List<Skill> AllSkills { get; set; }
+
+                                       
+
         public List<SelectListItem> AllEmployers { get; set; }
 
-        public AddJobViewModel(List<Employer> employers)
+        public AddJobViewModel(List<Employer> employers, List<Skill> skills)
         {
             AllEmployers = new List<SelectListItem>();
             foreach (Employer emp in employers)
@@ -33,6 +37,9 @@ namespace TechJobsPersistent.ViewModels
 
                 });
             }
+
+            AllSkills = skills;
+            
         }
 
         public AddJobViewModel()
